@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Acme\Transformers;
 
 use App\Http\Acme\Transformers;

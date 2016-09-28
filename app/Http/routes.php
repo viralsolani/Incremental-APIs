@@ -11,15 +11,11 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => 'web'], function() {
 
-	Route::group(['prefix' => 'api/v1'],function(){
-		Route::resource('lessions','LessionsController');
-	});
 
-});
 
