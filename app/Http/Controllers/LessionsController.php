@@ -58,9 +58,21 @@ class LessionsController extends Controller
     	]);
     }
 
-
+    /**
+     * store the given resource in to database
+     *
+     * @param  request
+     * @return Response
+     */
     public function store()
     {
-        dd('store');
+        if(!request()->get('title') or !request()->get('body'))
+        {
+            return $this->throwValidation('Parameters failed validation for the lession.');
+        }
+
+        Lession::create(request()->all());
+
+        return $this->respondCreated('Lession Sucessfully created.');
     }
 }
