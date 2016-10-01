@@ -1,4 +1,4 @@
 # Incremental-APIs
-Laravel 5 Api Boilerplate - Learn from Laracast - https://laracasts.com/series/incremental-api-development/ 
+Laravel 5 Api Boilerplate - Learning from Laracast - https://laracasts.com/series/incremental-api-development/ & Build APIs You Won't Hate.
 
-Thanks to Jeffrey Way.
+Thanks to Jeffrey Way & Phil Sturgeon.
