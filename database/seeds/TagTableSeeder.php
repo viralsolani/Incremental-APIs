@@ -1,9 +1,9 @@
 <?php
 
-use App\Lession;
+use App\Tag;
 use Illuminate\Database\Seeder;
 
-class LessionTableSeeder extends Seeder
+class TagTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class LessionTableSeeder extends Seeder
      */
     public function run()
     {
-    	Lession::truncate();
-        factory(App\Lession::class, 30)->create();
+        Tag::truncate();
+        factory(App\Tag::class, 10)->create();
     }
 }
