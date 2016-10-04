@@ -80,6 +80,27 @@ class Controller extends BaseController
     }
 
     /**
+     * respond with pagincation
+     *
+     * @param Paginator $lessions
+     * @param array $data
+     * @return mix
+     */
+    public function respondWithPagination($lessions, $data)
+    {
+        $data = array_merge($data, [
+            'paginator'   => [
+                'total_count'   => $lessions->total(),
+                'total_pages'   => ceil($lessions->total() / $lessions->perPage()),
+                'current_page'  => $lessions->currentPage(),
+                'limit'         => $lessions->perPage()
+             ]
+        ]);
+
+        return $this->respond($data);
+    }
+
+    /**
      * respond with error
      *
      * @param $message
@@ -119,4 +140,5 @@ class Controller extends BaseController
         return $this->setStatusCode(422)
                         ->respondWithError($messaege);
     }
+
 }

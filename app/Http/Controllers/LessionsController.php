@@ -31,11 +31,12 @@ class LessionsController extends Controller
      */
     public function Index()
     {
-    	$lessions =  Lession::all();
+        $limit = request()->get('limit') ? : 2;
+    	$lessions =  Lession::paginate($limit);
 
-    	return $this->respond([
-    		'data' => $this->lessionTransformer->transformCollection($lessions->all())
-    	]);
+        return $this->respondWithPagination($lessions, [
+            'data' => $this->lessionTransformer->transformCollection($lessions->all()),
+        ]);
     }
 
     /**
