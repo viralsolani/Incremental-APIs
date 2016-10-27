@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'api/v1' ,'middleware' =>'api'],function()
+Route::group(['prefix' => 'api/v1'],function()
 {
     Route::get('lessions/{id}/tags', 'TagsController@index');
     Route::resource('lessions','LessionsController');

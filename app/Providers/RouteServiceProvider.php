@@ -57,12 +57,6 @@ class RouteServiceProvider extends ServiceProvider
         ], function ($router) {
             require app_path('Http/routes.php');
         });
-
-         $router->group([
-             'namespace' => $this->namespace, 'middleware' => 'api',
-         ], function ($router) {
-             require app_path('Http/routes-api.php');
-         });
     }
 
     /**
@@ -76,7 +70,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes(Router $router)
     {
          $router->group([
-             'namespace' => $this->namespace, 'middleware' => 'api',
+             'namespace' => $this->namespace, 'middleware' => 'auth:api',
          ], function ($router) {
              require app_path('Http/routes-api.php');
          });
