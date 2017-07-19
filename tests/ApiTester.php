@@ -2,8 +2,8 @@
 
 use Faker\Factory as Faker;
 
-class ApiTester extends TestCase {
-
+class ApiTester extends TestCase
+{
     /**
      * @var Faker
      */
@@ -15,15 +15,15 @@ class ApiTester extends TestCase {
     protected $times = 1;
 
     /**
-     * Initialize
+     * Initialize.
      */
-    function __construct()
+    public function __construct()
     {
         $this->fake = Faker::create();
     }
 
     /**
-     * Setup database for each test
+     * Setup database for each test.
      */
     public function setUp()
     {
@@ -33,9 +33,10 @@ class ApiTester extends TestCase {
     }
 
     /**
-     * Number of times to make entities
+     * Number of times to make entities.
      *
      * @param $count
+     *
      * @return $this
      */
     protected function times($count)
@@ -46,9 +47,10 @@ class ApiTester extends TestCase {
     }
 
     /**
-     * Get JSON output from API
+     * Get JSON output from API.
      *
      * @param $uri
+     *
      * @return mixed
      */
     protected function getJson($uri)
@@ -57,18 +59,15 @@ class ApiTester extends TestCase {
     }
 
     /**
-     * Assert object has any number of attributes
-     *
+     * Assert object has any number of attributes.
      */
     protected function assertObjectHasAttributes()
     {
         $args = func_get_args();
         $object = array_shift($args);
 
-        foreach ($args as $attribute)
-        {
+        foreach ($args as $attribute) {
             $this->assertObjectHasAttribute($attribute, $object);
         }
     }
-
 }

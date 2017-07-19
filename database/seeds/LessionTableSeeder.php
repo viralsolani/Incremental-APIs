@@ -12,7 +12,7 @@ class LessionTableSeeder extends Seeder
      */
     public function run()
     {
-    	Lession::truncate();
+        Lession::truncate();
         factory(App\Lession::class, 30)->create();
     }
 }
