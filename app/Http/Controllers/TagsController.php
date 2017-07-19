@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Tag;
-use App\Lession;
-use App\Http\Requests;
-use Illuminate\Http\Request;
 use App\Http\Acme\Transformers\TagTransformer;
+use App\Lession;
+use App\Tag;
 
 class TagsController extends Controller
 {
-
     /**
      * @param TagTransformer $TagTransformer
      */
@@ -18,6 +15,7 @@ class TagsController extends Controller
     {
         $this->tagTransformer = $tagTransformer;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,15 +23,15 @@ class TagsController extends Controller
      */
     public function Index($lessionId = null)
     {
-       $tags = $this->getTags($lessionId);
+        $tags = $this->getTags($lessionId);
 
         return $this->respond([
-            'data' => $this->tagTransformer->transformCollection($tags->all())
+            'data' => $this->tagTransformer->transformCollection($tags->all()),
         ]);
     }
 
     private function getTags($lessionId)
     {
-       return $lessionId ? Lession::findOrFail($lessionId)->tags : Tag::all();
+        return $lessionId ? Lession::findOrFail($lessionId)->tags : Tag::all();
     }
 }

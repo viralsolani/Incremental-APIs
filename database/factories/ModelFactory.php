@@ -13,18 +13,18 @@
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->safeEmail,
-        'password' => bcrypt('1234'),
+        'name'           => $faker->name,
+        'email'          => $faker->safeEmail,
+        'password'       => bcrypt('1234'),
         'remember_token' => str_random(10),
-        'api_token' => str_random(60)
+        'api_token'      => str_random(60),
     ];
 });
 
 $factory->define(App\Lession::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->sentence(5),
-        'body' => $faker->paragraph(4)
+        'body'  => $faker->paragraph(4),
     ];
 });
 

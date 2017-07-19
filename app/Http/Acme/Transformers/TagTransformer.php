@@ -1,15 +1,13 @@
 <?php
-namespace App\Http\Acme\Transformers;
 
-use App\Http\Acme\Transformers;
+namespace App\Http\Acme\Transformers;
 
 class TagTransformer extends Transformer
 {
-
-	public function transform($tag)
+    public function transform($tag)
     {
-    	return [
-    		'title' => $tag['name']
-    	];
+        return [
+            'title' => $tag['name'],
+        ];
     }
 }

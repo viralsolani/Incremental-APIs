@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Lession;
-use Response;
 use App\Http\Acme\Transformers\LessionTransformer;
-
+use App\Lession;
+use Illuminate\Http\Request;
+use Response;
 
 class LessionsController extends Controller
 {
-	/**
+    /**
      * @var Acme\Transformers\LessionTransformer
      */
     protected $lessionTransformer;
@@ -19,10 +17,10 @@ class LessionsController extends Controller
     /**
      * @param LessionTransformer $lessionTransformer
      */
-	public function __construct(LessionTransformer $lessionTransformer)
-	{
-		$this->lessionTransformer = $lessionTransformer;
-	}
+    public function __construct(LessionTransformer $lessionTransformer)
+    {
+        $this->lessionTransformer = $lessionTransformer;
+    }
 
     /**
      * Display a listing of the resource.
@@ -31,8 +29,8 @@ class LessionsController extends Controller
      */
     public function Index()
     {
-        $limit = request()->get('limit') ? : 2;
-    	$lessions =  Lession::paginate($limit);
+        $limit = request()->get('limit') ?: 2;
+        $lessions = Lession::paginate($limit);
 
         return $this->respondWithPagination($lessions, [
             'data' => $this->lessionTransformer->transformCollection($lessions->all()),
@@ -40,35 +38,35 @@ class LessionsController extends Controller
     }
 
     /**
-     * Display the specified resource
+     * Display the specified resource.
      *
      * @param  $id
+     *
      * @return Response
      */
     public function show($id)
     {
-    	$lession = Lession::find($id);
+        $lession = Lession::find($id);
 
-    	if(!$lession)
-    	{
+        if (!$lession) {
             return $this->respondNotFound('Lession does not exist.');
-    	}
+        }
 
-    	return $this->respond([
-    		'data' => $this->lessionTransformer->transform($lession)
-    	]);
+        return $this->respond([
+            'data' => $this->lessionTransformer->transform($lession),
+        ]);
     }
 
     /**
-     * store the given resource in to database
+     * store the given resource in to database.
      *
      * @param  request
+     *
      * @return Response
      */
     public function store()
     {
-        if(!request()->get('title') or !request()->get('body'))
-        {
+        if (!request()->get('title') or !request()->get('body')) {
             return $this->throwValidation('Parameters failed validation for the lession.');
         }
 

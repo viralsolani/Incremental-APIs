@@ -1,6 +1,5 @@
 <?php
 
-use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +12,6 @@ use App\User;
 |
 */
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,4 +19,3 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
-

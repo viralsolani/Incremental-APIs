@@ -2,7 +2,6 @@
 
 class lessionsTest extends ApiTester
 {
-
     /** @test */
     public function it_fetches_lessions()
     {
@@ -35,12 +34,13 @@ class lessionsTest extends ApiTester
     private function makeLesson($lessonFields = [])
     {
         $lesson = array_merge([
-            'title' => $this->fake->sentence,
-            'body'  => $this->fake->paragraph,
-            'some_bool' => $this->fake->boolean
+            'title'     => $this->fake->sentence,
+            'body'      => $this->fake->paragraph,
+            'some_bool' => $this->fake->boolean,
         ], $lessonFields);
 
-        while($this->times--) App\Lession::create($lesson);
+        while ($this->times--) {
+            App\Lession::create($lesson);
+        }
     }
-
 }

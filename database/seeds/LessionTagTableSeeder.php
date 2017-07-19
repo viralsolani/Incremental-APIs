@@ -1,12 +1,11 @@
 <?php
 
-use App\Tag;
 use App\Lession;
+use App\Tag;
 use Illuminate\Database\Seeder;
 
 class LessionTagTableSeeder extends Seeder
 {
-
     /**
      * Run the database seeds.
      *
@@ -21,11 +20,10 @@ class LessionTagTableSeeder extends Seeder
         $lessionIds = Lession::lists('id')->toArray();
         $tagIds = Tag::lists('id')->toArray();
 
-        foreach (range(1,30) as $index)
-        {
+        foreach (range(1, 30) as $index) {
             DB::table('lession_tag')->insert([
                 'lession_id' => $faker->randomElement($lessionIds),
-                'tag_id'     => $faker->randomElement($tagIds)
+                'tag_id'     => $faker->randomElement($tagIds),
             ]);
         }
     }
